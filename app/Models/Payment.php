@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Payment extends Model
+{
+    protected $fillable = [
+        'booking_id', 'amount', 'payment_proof_path', 'verified_at'
+    ];
+
+    protected $casts = [
+        'verified_at' => 'datetime',
+    ];
+
+    public function booking() { return $this->belongsTo(Booking::class); }
+}
