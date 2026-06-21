@@ -55,3 +55,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/setup-kampus', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    return 'Database Migration, Seeding, dan Storage Link berhasil!';
+});
